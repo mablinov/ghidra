@@ -34,3 +34,9 @@ jobs:
       run: gradle -I gradle/support/fetchDependencies.gradle init
     - name: Build with Gradle
       run: gradle --parallel buildGhidra
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-directory
+        path: |
+          build
