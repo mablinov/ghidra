@@ -4,7 +4,11 @@
 @include "riscv.rv32i.sinc"
 @include "riscv.rv32a.sinc"
 @include "riscv.rv32m.sinc"
-@include "riscv.rv32b.sinc"
+# @include "riscv.rv32b.sinc"
+@include "riscv.rv32zba.sinc"
+@include "riscv.rv32zbb.sinc"
+# @include "riscv.rv32zbc.sinc"
+@include "riscv.rv32zbs.sinc"
 @include "riscv.rv32p.sinc"
 @include "riscv.rv32k.sinc"
 
@@ -25,7 +29,7 @@
 @include "riscv.rv64i.sinc"
 @include "riscv.rv64a.sinc"
 @include "riscv.rv64m.sinc"
-@include "riscv.rv64b.sinc"
+# @include "riscv.rv64b.sinc"
 @include "riscv.rv64p.sinc"
 @include "riscv.rv64k.sinc"
 

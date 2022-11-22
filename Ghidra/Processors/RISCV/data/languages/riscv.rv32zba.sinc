@@ -1,0 +1,11 @@
+:sh1add rd, rs1, rs2 is op0006=0x33 & op1214=0x2 & op2531=0x10 & rd & rs1 & rs2 {
+	rd = rs1 + (rs2 << 1);
+}
+
+:sh2add rd, rs1, rs2 is op0006=0x33 & op1214=0x4 & op2531=0x10 & rd & rs1 & rs2 {
+	rd = rs1 + (rs2 << 2);
+}
+
+:sh3add rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x10 & rd & rs1 & rs2 {
+	rd = rs1 + (rs2 << 3);
+}

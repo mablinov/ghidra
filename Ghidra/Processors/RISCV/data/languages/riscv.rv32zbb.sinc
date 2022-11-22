@@ -1,0 +1,113 @@
+:andn rd, rs1, rs2 is op0006=0x33 & op1214=0x7 & op2531=0x20 & rd & rs1 & rs2 {
+	rd = rs1 & ~rs2;
+}
+
+:orn  rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x20 & rd & rs1 & rs2 {
+	rd = rs1 | ~rs2;
+}
+
+:xnor rd, rs1, rs2 is op0006=0x33 & op1214=0x4 & op2531=0x20 & rd & rs1 & rs2 {
+	rd = ~(rs1 ^ rs2);
+}
+
+# Copied from Processors\x86\data\languages\lzcnt.sinc
+:clz rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x0 & op2531=0x30 & rd & rs1 {
+  countTmp:4 = 0;
+  inputTmp:4 = rs1;
+
+ <loopbegin>
+  if ((inputTmp & 0x80000000) != 0) goto <loopend>;
+
+  countTmp = countTmp + 1;
+  inputTmp = (inputTmp << 1) | 1;
+  goto <loopbegin>;
+
+ <loopend>
+  rd = countTmp;
+}
+
+# Copied from Processors\x86\data\languages\bmi1.sinc
+:ctz rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x1 & op2531=0x30 & rd & rs1 {
+  countTmp:4 = 0;
+  inputTmp:4 = rs1;
+
+ <loopbegin>
+  if ((inputTmp & 1) != 0) goto <loopend>;
+
+  countTmp = countTmp + 1;
+  inputTmp = (inputTmp >> 1) | 0x80000000;
+  goto <loopbegin>;
+
+ <loopend>
+  rd = countTmp;
+}
+
+:cpop rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x2 & op2531=0x30 & rd & rs1 {
+	rd = popcount(rs1);
+}
+
+:max  rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x5 & rd & rs1 & rs2 {
+	rd = rs1;
+	if (rs2 s< rd) goto inst_next;
+	rd = rs2;
+}
+
+:maxu rd, rs1, rs2 is op0006=0x33 & op1214=0x7 & op2531=0x5 & rd & rs1 & rs2 {
+	rd = rs1;
+	if (rs2 < rd) goto inst_next;
+	rd = rs2;
+}
+
+:min  rd, rs1, rs2 is op0006=0x33 & op1214=0x4 & op2531=0x5 & rd & rs1 & rs2 {
+	rd = rs1;
+	if (rs2 s> rd) goto inst_next;
+	rd = rs2;
+}
+
+:minu rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x5 & rd & rs1 & rs2 {
+	rd = rs1;
+	if (rs2 > rd) goto inst_next;
+	rd = rs2;
+}
+
+:sext.b rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x4 & op2531=0x30 & rd & rs1 {
+	rd = sext(rs1:1);
+}
+
+:sext.h rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x5 & op2531=0x30 & rd & rs1 {
+	rd = sext(rs1:2);
+}
+
+:zext.h rd, rs1 is op0006=0x33 & op1214=0x4 & op2024=0x0 & op2531=0x4 & rd & rs1 {
+	rd = zext(rs1:2);
+}
+
+:rol  rd, rs1, rs2 is op0006=0x33 & op1214=0x1 & op2531=0x30 & rd & rs1 & rs2 {
+	local cnt = rs2 & 0x1f;
+	rd = (rs1 << cnt) | (rs1 >> (32 - cnt));
+}
+
+:ror  rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x30 & rd & rs1 & rs2 {
+	local cnt = rs2 & 0x1f;
+	rd = (rs1 >> cnt) | (rs1 << (32 - cnt));
+}
+
+:rori rd, rs1, op2026 is op0006=0x13 & op1214=0x5 & op2731=0xc & op2026 & rd & rs1 {
+	local cnt = op2026 & 0x1f;
+	rd = (rs1 >> cnt) | (rs1 << (32 - cnt));
+}
+
+:orc.b rd, rs1 is rs1 & rd & op0001=0x3 & op0204=0x4 & op0506=0x0 & funct3=0x5 & op2031=0x287 {
+	rd = rs1;
+	
+	rd = rd | ((rd & 0x55555555) << 1) | ((rd & 0xAAAAAAAA) >> 1);
+	rd = rd | ((rd & 0x33333333) << 2) | ((rd & 0xCCCCCCCC) >> 2);
+	rd = rd | ((rd & 0x0F0F0F0F) << 4) | ((rd & 0xF0F0F0F0) >> 4);
+}
+
+:rev8 rd, rs1 is rs1 & rd & op0001=0x3 & op0204=0x4 & op0506=0x0 & funct3=0x5 & op2031=0x698 {
+	rd = rs1;
+	
+	rd = ((rd & 0x00FF00FF) << 8) | ((rd & 0xFF00FF00) >> 8);
+	rd = ((rd & 0x0000FFFF) << 16) | ((rd & 0xFFFF0000) >> 16);
+}

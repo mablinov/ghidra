@@ -22,6 +22,7 @@
       <constraint primary="243" secondary="5" processor="RISCV" endian="little" size="32" variant="RV32GC"/>
       <constraint primary="243" secondary="5" processor="RISCV" endian="little" size="64" variant="RV64GC"/>
       <constraint primary="243" processor="RISCV" endian="little" size="32" variant="RV32GC"/>
+      <constraint primary="243" processor="RISCV" endian="little" size="32" variant="RV32IMC_ZBA_ZBB_ZBS"/>
       <constraint primary="243" processor="RISCV" endian="little" size="64" variant="RV64GC"/>
     </constraint>
   </constraint>

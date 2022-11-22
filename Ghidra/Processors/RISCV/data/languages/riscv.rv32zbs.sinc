@@ -1,0 +1,31 @@
+:bclri rd, rs1, op2026 is op0006=0x13 & op1214=0x1 & op2731=0x9 & op2026 & rd & rs1 {
+	rd = rs1 & (0xffffffff ^ (1 << op2026));
+}
+
+:bseti rd, rs1, op2026 is op0006=0x13 & op1214=0x1 & op2731=0x5 & op2026 & rd & rs1 {
+	rd = rs1 | (1 << op2026);
+}
+
+:binvi rd, rs1, op2026 is op0006=0x13 & op1214=0x1 & op2731=0xd & op2026 & rd & rs1 {
+	rd = rs1 ^ (1 << op2026);
+}
+
+:bexti rd, rs1, op2026 is op0006=0x13 & op1214=0x5 & op2731=0x9 & op2026 & rd & rs1 {
+	rd = 1 & (rs1 >> op2026);
+}
+
+:bclr  rd, rs1, rs2 is op0006=0x33 & op1214=0x1 & op2531=0x24 & rd & rs1 & rs2 {
+	rd = rs1 & (0xffffffff ^ (1 << rs2));
+}
+
+:bset  rd, rs1, rs2 is op0006=0x33 & op1214=0x1 & op2531=0x14 & rd & rs1 & rs2 {
+	rd = rs1 | (1 << rs2);
+}
+
+:binv  rd, rs1, rs2 is op0006=0x33 & op1214=0x1 & op2531=0x34 & rd & rs1 & rs2 {
+	rd = rs1 ^ (1 << rs2);
+}
+
+:bext  rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x24 & rd & rs1 & rs2 {
+	rd = 1 & (rs1 >> rs2);
+}
