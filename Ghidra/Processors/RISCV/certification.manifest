@@ -5,6 +5,7 @@ data/languages/RV32GC.pspec||GHIDRA||||END|
 data/languages/RV32I.pspec||GHIDRA||||END|
 data/languages/RV32IC.pspec||GHIDRA||||END|
 data/languages/RV32IMC.pspec||GHIDRA||||END|
+data/languages/RV32IMC_ZBA_ZBB_ZBS.pspec||GHIDRA||||END|
 data/languages/RV64G.pspec||GHIDRA||||END|
 data/languages/RV64GC.pspec||GHIDRA||||END|
 data/languages/RV64I.pspec||GHIDRA||||END|
@@ -27,6 +28,9 @@ data/languages/riscv.rv32k.sinc||GHIDRA||||END|
 data/languages/riscv.rv32m.sinc||GHIDRA||||END|
 data/languages/riscv.rv32p.sinc||GHIDRA||||END|
 data/languages/riscv.rv32q.sinc||GHIDRA||||END|
+data/languages/riscv.rv32zba.sinc||GHIDRA||||END|
+data/languages/riscv.rv32zbb.sinc||GHIDRA||||END|
+data/languages/riscv.rv32zbs.sinc||GHIDRA||||END|
 data/languages/riscv.rv64a.sinc||GHIDRA||||END|
 data/languages/riscv.rv64b.sinc||GHIDRA||||END|
 data/languages/riscv.rv64d.sinc||GHIDRA||||END|
