@@ -33,4 +33,4 @@ jobs:
     - name: Setup build environment
       run: gradle -I gradle/support/fetchDependencies.gradle init
     - name: Build with Gradle
-      run: gradle buildGhidra
+      run: gradle --parallel buildGhidra
