@@ -112,7 +112,7 @@
             variant="RV32IMC_ZBA_ZBB_ZBS"
             version="1.2"
             slafile="riscv.ilp32d.sla"
-            processorspec="RV32IMC.pspec"
+            processorspec="RV32IMC_ZBA_ZBB_ZBS.pspec"
             id="RISCV:LE:32:RV32IMC_ZBA_ZBB_ZBS">
     <description>RISC-V 32 little base compressed with zbs</description>
     <compiler name="gcc" spec="riscv32.cspec" id="gcc"/>
