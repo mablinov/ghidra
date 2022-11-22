@@ -9,9 +9,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "mblinov-riscv-extensions" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "mblinov-riscv-extensions" ]
+    branches: [ "master" ]
 
 permissions:
   contents: read
@@ -28,7 +28,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Setup build environment
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      with:
+        arguments: ["-I", "gradle/support/fetchDependencies.gradle", "init"]
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-        arguments: build
+        arguments: buildGhidra
