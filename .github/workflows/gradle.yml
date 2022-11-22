@@ -39,4 +39,4 @@ jobs:
       with:
         name: build-directory
         path: |
-          build/dist
+          build/dist/*
