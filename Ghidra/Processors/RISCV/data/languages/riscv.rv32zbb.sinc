@@ -12,8 +12,8 @@
 
 # Copied from Processors\x86\data\languages\lzcnt.sinc
 :clz rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x0 & op2531=0x30 & rd & rs1 {
-  countTmp:4 = 0;
-  inputTmp:4 = rs1;
+  countTmp:$(XLEN) = 0;
+  inputTmp:$(XLEN) = rs1;
 
  <loopbegin>
   if ((inputTmp & 0x80000000) != 0) goto <loopend>;
@@ -28,8 +28,8 @@
 
 # Copied from Processors\x86\data\languages\bmi1.sinc
 :ctz rd, rs1 is op0006=0x13 & op1214=0x1 & op2024=0x1 & op2531=0x30 & rd & rs1 {
-  countTmp:4 = 0;
-  inputTmp:4 = rs1;
+  countTmp:$(XLEN) = 0;
+  inputTmp:$(XLEN) = rs1;
 
  <loopbegin>
   if ((inputTmp & 1) != 0) goto <loopend>;
