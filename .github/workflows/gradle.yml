@@ -31,10 +31,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Setup build environment
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: "-I gradle/support/fetchDependencies.gradle init"
+      run: gradle -I gradle/support/fetchDependencies.gradle init
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      uses: gradle/gradle-build-action@v2.3.3
       with:
         arguments: buildGhidra
